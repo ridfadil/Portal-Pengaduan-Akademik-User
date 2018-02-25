@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+
+    <item android:title="Pengaduan">
+        <menu>
+            <item
+                android:id="@+id/nav_fasilitas"
+                android:icon="@drawable/ic_fasilitas"
+                android:title="Pengaduan Fasilitas" />
+            <item
+                android:id="@+id/nav_organisasi"
+                android:icon="@drawable/ic_organisasi"
+                android:title="Pengaduan Organisasi" />
+            <item
+                android:id="@+id/nav_dosen"
+                android:icon="@drawable/ic_teacher"
+                android:title="Pengaduan Dosen" />
+            <item
+                android:id="@+id/nav_administrasi"
+                android:icon="@drawable/ic_administrasi"
+                android:title="Pengaduan Administrasi" />
+        </menu>
+    </item>
+
+    <item android:title="Fitur Lain">
+        <menu>
+            <item
+                android:id="@+id/nav_list_dosen"
+                android:icon="@drawable/ic_notepad"
+                android:title="List Dosen" />
+            <item
+                android:id="@+id/nav_ganti_password"
+                android:icon="@drawable/ic_gantipass"
+                android:title="Ganti Password" />
+            <item
+                android:id="@+id/nav_about"
+                android:icon="@drawable/ic_tentang"
+                android:title="Tentang Kami" />
+        </menu>
+    </item>
+
+</menu>

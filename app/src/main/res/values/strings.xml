@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Portal Pengaduan User</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="info_dashboard">Aplikasi ini merupakan Aplikasi Untuk mencari solusi dalam menyelesaikan Masalah di Bidang Akademik guna menciptakan kondisi aademik yang harmonis dari berbagai Elemen Civitas</string>
+    <string name="info_dashboard_atas">Silakan Sampaikan Pengaduan secara Sopan dan Santun :)</string>
+</resources>
+
