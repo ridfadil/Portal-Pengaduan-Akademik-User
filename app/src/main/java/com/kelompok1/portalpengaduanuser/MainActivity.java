@@ -24,7 +24,7 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private static final Integer[] Gambar = {R.drawable.coba, R.drawable.coba, R.drawable.coba, R.drawable.coba, R.drawable.coba};
+    private static final Integer[] Gambar = {R.drawable.coba, R.drawable.coba2, R.drawable.coba3, R.drawable.coba4};
     private static ViewPager mPager;
     private static int currentPage = 0;
     private ArrayList<Integer> GambarArray = new ArrayList<Integer>();
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
             public void run() {
                 handler.post(Update);
             }
-        }, 2500, 2500);
+        }, 5000, 5000);
     }
 
     @Override
@@ -139,10 +139,16 @@ public class MainActivity extends AppCompatActivity
             startActivity(i);
 
         } else if (id == R.id.nav_list_dosen) {
+            Intent i = new Intent(MainActivity.this, ListDataDosenActivity.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_ganti_password) {
+            Intent i = new Intent(MainActivity.this, GantiPasswordActivity.class);
+            startActivity(i);
 
         } else if (id == R.id.nav_about) {
+            Intent i = new Intent(MainActivity.this, TentangKamiActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

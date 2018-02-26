@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -27,7 +27,8 @@
         <activity android:name=".AdministrasiActivity" />
         <activity android:name=".ListDataDosenActivity" />
         <activity android:name=".GantiPasswordActivity" />
-        <activity android:name=".TentangKamiActivity"></activity>
+        <activity android:name=".TentangKamiActivity" />
+        <activity android:name=".MainActivity" android:theme="@style/AppTheme2.NoActionBar"></activity>
     </application>
 
 </manifest>
