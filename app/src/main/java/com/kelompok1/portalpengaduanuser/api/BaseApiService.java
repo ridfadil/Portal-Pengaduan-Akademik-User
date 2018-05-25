@@ -1,5 +1,6 @@
 package com.kelompok1.portalpengaduanuser.api;
 
+import com.kelompok1.portalpengaduanuser.modelapi.FormAddPengaduan;
 import com.kelompok1.portalpengaduanuser.modelapi.FormAddUser;
 import com.kelompok1.portalpengaduanuser.modelapi.FormLogin;
 import com.kelompok1.portalpengaduanuser.modelapi.ResponseLogin;
@@ -18,6 +19,9 @@ public interface BaseApiService {
 
     @POST("addUser/")
     Call<ResponseBody> addUser(@Body FormAddUser addUser);
+
+    @POST("addPengaduan/")
+    Call<ResponseBody> addPengaduan(@Body FormAddPengaduan addPengaduan);
 
     /*@GET("api/company/companyprofil")
     Call<List<ResponseCompanyProfile>>getCompanyProfile(@Header("Authorization") String Authorization);

@@ -1,30 +1,22 @@
 package com.kelompok1.portalpengaduanuser.modelapi;
 
 public class FormAddUser {
-    private String nim;
-    private String pasword;
+    private String NIM;
     private String nama;
+    private String pasword;
 
-    public FormAddUser(String nim, String pasword, String nama) {
-        this.nim = nim;
-        this.pasword = pasword;
+    public FormAddUser(String NIM, String nama, String pasword) {
+        this.NIM = NIM;
         this.nama = nama;
-    }
-
-    public String getNim() {
-        return nim;
-    }
-
-    public void setNim(String nim) {
-        this.nim = nim;
-    }
-
-    public String getPasword() {
-        return pasword;
-    }
-
-    public void setPasword(String pasword) {
         this.pasword = pasword;
+    }
+
+    public String getNIM() {
+        return NIM;
+    }
+
+    public void setNIM(String NIM) {
+        this.NIM = NIM;
     }
 
     public String getNama() {
@@ -33,5 +25,13 @@ public class FormAddUser {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public String getPasword() {
+        return pasword;
+    }
+
+    public void setPasword(String pasword) {
+        this.pasword = pasword;
     }
 }

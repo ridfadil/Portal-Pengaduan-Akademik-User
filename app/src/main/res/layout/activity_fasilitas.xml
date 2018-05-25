@@ -64,12 +64,12 @@
                         android:paddingBottom="40dp" />
                 </android.support.design.widget.TextInputLayout>
 
-                <Button
+<!--                <Button
                     android:id="@+id/btn_upload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/btn_custom_2"
-                    android:text="Upload" />
+                    android:text="Upload" />-->
             </LinearLayout>
         </android.support.v7.widget.CardView>
 

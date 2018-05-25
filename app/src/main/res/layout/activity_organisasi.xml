@@ -29,6 +29,7 @@
                     android:layout_marginRight="5dp">
 
                     <EditText
+                        android:id="@+id/nama_organisasi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nama Organisasi" />
@@ -41,6 +42,7 @@
                     android:layout_marginRight="5dp">
 
                     <EditText
+                        android:id="@+id/keluhan_organisasi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Keluhan"
@@ -54,6 +56,7 @@
                     android:layout_marginRight="5dp">
 
                     <EditText
+                        android:id="@+id/saran_organisasi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Saran/Solusi"
@@ -63,6 +66,7 @@
         </android.support.v7.widget.CardView>
 
         <Button
+            android:id="@+id/kirim"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"

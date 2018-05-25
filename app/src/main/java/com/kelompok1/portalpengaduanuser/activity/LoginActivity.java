@@ -100,7 +100,12 @@ public class LoginActivity extends AppCompatActivity {
             case R.id.btn_login:
                 nim = etNimUsername.getText().toString();
                 password = etPassword.getText().toString();
-                saveLogin(nim,password);
+                if (nim != null && password != null){
+                    saveLogin(nim,password);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Form masih ada yang kosong",Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
