@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.kelompok1.portalpengaduanuser.AdministrasiActivity">
+    tools:context="com.kelompok1.portalpengaduanuser.activity.AdministrasiActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,36 +22,69 @@
                 android:orientation="vertical"
                 android:padding="10dp">
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nama Dosen" />
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
 
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Mata Kuliah" />
+                    <EditText
+                        android:id="@+id/et_nama_dosen_pengaduan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Nama Dosen" />
+                </android.support.design.widget.TextInputLayout>
 
-                <EditText
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Keluhan"
-                    android:paddingBottom="40dp"/>
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
 
-                <EditText
+                    <EditText
+                        android:id="@+id/et_matakuliah_dosen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Mata Kuliah" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Saran/Solusi"
-                    android:paddingBottom="40dp"/>
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+
+                    <EditText
+                        android:id="@+id/et_keluhan_dosen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Keluhan"
+                        android:paddingBottom="40dp" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp">
+
+                    <EditText
+                        android:id="@+id/et_saran_dosen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Saran/Solusi"
+                        android:paddingBottom="40dp" />
+                </android.support.design.widget.TextInputLayout>
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
         <Button
+            android:id="@+id/btn_kirim_dosen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:text="Kirim"
-            android:background="@drawable/btn_custom"/>
+            android:background="@drawable/btn_custom"
+            android:text="Kirim" />
     </LinearLayout>
 </ScrollView>
