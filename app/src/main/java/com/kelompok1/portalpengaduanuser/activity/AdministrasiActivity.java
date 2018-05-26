@@ -86,11 +86,11 @@ public class AdministrasiActivity extends AppCompatActivity {
                 judul = etJenisAdministrasi.getText().toString();
                 keluhan = etKeluhanAdministrasi.getText().toString();
                 saran = etSaranAdministrasi.getText().toString();
-                if (jenis != null  && saran != null && keluhan != null){
-                    kirimAduan(judul,NIM,keluhan,saran,jenis);
+                if (jenis.isEmpty()  || saran.isEmpty() || keluhan.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Form Masih ada yang Kosong", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Form Masih ada yang Kosong", Toast.LENGTH_SHORT).show();
+                    kirimAduan(judul,NIM,keluhan,saran,jenis);
                 }
                 break;
         }

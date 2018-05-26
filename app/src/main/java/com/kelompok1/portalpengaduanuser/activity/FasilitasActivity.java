@@ -86,10 +86,10 @@ public class FasilitasActivity extends AppCompatActivity {
                 namaFasilitas = etNamaFasilitas.getText().toString();
                 keluhan = etKeluhanFasilitas.getText().toString();
                 saran = saranFasilitas.getText().toString();
-                if (namaFasilitas != null && keluhan != null && saran != null) {
-                    kirimAduan(namaFasilitas, NIM, keluhan, saran, jenis);
-                } else {
+                if (namaFasilitas.isEmpty() || keluhan.isEmpty()|| saran.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Form Masih Ada yang Kosong", Toast.LENGTH_SHORT).show();
+                } else {
+                    kirimAduan(namaFasilitas, NIM, keluhan, saran, jenis);
                 }
                 break;
         }

@@ -87,11 +87,11 @@ public class OrganisasiActivity extends AppCompatActivity {
                 namaOrg = namaOrganisasi.getText().toString();
                 keluhan = keluhanOrganisasi.getText().toString();
                 saran = saranOrganisasi.getText().toString();
-                if (namaOrg != null && keluhan != null && saran != null){
-                    kirimAduan(namaOrg,NIM,keluhan,saran,jenis);
+                if (namaOrg.isEmpty()|| keluhan.isEmpty()|| saran.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "Form masih ada yang kosong", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    Toast.makeText(getApplicationContext(), "Form masih ada yang kosong", Toast.LENGTH_SHORT).show();
+                    kirimAduan(namaOrg,NIM,keluhan,saran,jenis);
                 }
                 break;
         }

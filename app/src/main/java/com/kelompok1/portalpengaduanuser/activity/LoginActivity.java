@@ -11,35 +11,57 @@ import android.widget.Toast;
 
 import com.kelompok1.portalpengaduanuser.R;
 import com.kelompok1.portalpengaduanuser.api.UtilsApi;
+import com.kelompok1.portalpengaduanuser.modelapi.DataUser;
 import com.kelompok1.portalpengaduanuser.modelapi.FormLogin;
 import com.kelompok1.portalpengaduanuser.modelapi.ResponseLogin;
+import com.kelompok1.portalpengaduanuser.session.SessionManager;
 
-import butterknife.BindView;
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.et_nim_username)
-    EditText etNimUsername;
-    @BindView(R.id.et_password)
-    EditText etPassword;
-    @BindView(R.id.tv_registrasi)
-    TextView tvRegistrasi;
-    @BindView(R.id.btn_login)
-    Button btnLogin;
 
-    String nim,password;
+    List<DataUser> responData = new ArrayList<>();
+    SessionManager session;
+
+    private EditText etNimUsername;
+    private EditText etPassword;
+    private TextView tvRegistrasi;
+    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        ButterKnife.bind(this);
-
+        initView();
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nim, password;
+                nim = etNimUsername.getText().toString();
+                password = etPassword.getText().toString();
+                if (nim.isEmpty() || password.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Form masih ada yang kosong", Toast.LENGTH_SHORT).show();
+                } else {
+                    saveLogin(nim, password);
+                }
+            }
+        });
+        tvRegistrasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, RegistrasiActivity.class);
+                startActivity(i);
+            }
+        });
     }
+
 
     private void saveLogin(String username, String password) {
 
@@ -50,32 +72,21 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                 if (response.isSuccessful()) {
-                    //String status=ResponseLogin.getStatus();
-/*                    ResponseLogin responsesStatus = response.body().getStatus();
-                    User responsesNama = response.body().getUser();
-                    User responsesPosisi = response.body().getUser();
-                    User responsesNoHp = response.body().getUser();
-                    Token responsesToken = response.body().getToken();
-                    String token = responsesToken.getAccessToken();
-                    String id = responsesId.getId();
-                    String email = responsesId.getEmail();
-                    String noHp = responsesNoHp.getNoHp();
-                    String nama = responsesNama.getNama();
-                    String posisi = responsesPosisi.getPosisi();
-                    session.createPosisiSession(posisi);
-                    session.createIdSession(id);
-                    session.createEmailSession(email);
-                    session.createLoginSession(token);
-                    session.createNamaSession(nama);
-                    session.createNoHpSession(noHp);
-                    *//*Snackbar.make(findViewById(R.id.rootView), "No internet connection", Snackbar.LENGTH_SHORT).show();*//*
-*//*                  Toast.makeText(LoginActivity.this, id, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(LoginActivity.this, email, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(LoginActivity.this, nama, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(LoginActivity.this, noHp, Toast.LENGTH_SHORT).show();*/
-                    Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(i);
+                    session = new SessionManager(getApplicationContext());
+                    responData = response.body().getData();
+                    String Nim = responData.get(0).getNim();
+                    String nama = responData.get(0).getNama();
+                    String role = responData.get(0).getRole();
+                    if (nama.isEmpty()&&Nim.isEmpty()) {
+                        Toast.makeText(LoginActivity.this, "Login Salah cek email dan username", Toast.LENGTH_SHORT).show();
+                    } else {
+                        session.createNamaSession(nama);
+                        session.createNimSession(Nim);
+                        session.createRoleSession(role);
+                        Toast.makeText(LoginActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                        startActivity(i);
+                    }
                 } else {
                     Toast.makeText(LoginActivity.this, "check your Email or Password", Toast.LENGTH_SHORT).show();
                 }
@@ -88,24 +99,20 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    @butterknife.OnClick({R.id.tv_registrasi, R.id.btn_login})
+    private void initView() {
+        etNimUsername = (EditText) findViewById(R.id.et_nim_username);
+        etPassword = (EditText) findViewById(R.id.et_password);
+        tvRegistrasi = (TextView) findViewById(R.id.tv_registrasi);
+        btnLogin = (Button) findViewById(R.id.btn_login);
+        btnLogin.setOnClickListener(this);
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             default:
                 break;
-            case R.id.tv_registrasi:
-                Intent i = new Intent(LoginActivity.this,RegistrasiActivity.class);
-                startActivity(i);
-                break;
             case R.id.btn_login:
-                nim = etNimUsername.getText().toString();
-                password = etPassword.getText().toString();
-                if (nim != null && password != null){
-                    saveLogin(nim,password);
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"Form masih ada yang kosong",Toast.LENGTH_SHORT).show();
-                }
                 break;
         }
     }

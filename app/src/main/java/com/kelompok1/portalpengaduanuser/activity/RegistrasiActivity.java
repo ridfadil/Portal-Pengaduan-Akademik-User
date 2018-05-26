@@ -93,20 +93,17 @@ public class RegistrasiActivity extends AppCompatActivity {
                 nama = etNamaRegistrasi.getText().toString();
                 repass = etRepassword.getText().toString();
 
-                if(nim !=null && pass != null && nama != null && repass != null){
+                if(nim.isEmpty() || pass.isEmpty() || nama.isEmpty() || repass.isEmpty()){
                     if (pass.equals(repass)){
-                        saveRegister(nim,nama,pass);
+                        Toast.makeText(RegistrasiActivity.this, "Password Tidak sesuai, Silakan ulangi", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        Toast.makeText(RegistrasiActivity.this, "Password Tidak sesuai, Silakan ulangi", Toast.LENGTH_SHORT).show();
+                        saveRegister(nim,nama,pass);
                     }
                 }
                 else{
                     Toast.makeText(RegistrasiActivity.this, "Form masih ada yang Kosong", Toast.LENGTH_SHORT).show();
                 }
-
-
-
                 break;
         }
     }

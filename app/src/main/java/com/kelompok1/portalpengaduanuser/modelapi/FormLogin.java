@@ -1,27 +1,27 @@
 package com.kelompok1.portalpengaduanuser.modelapi;
 
 public class FormLogin {
-    private String nim;
-    private String pasword;
+    private String NIM;
+    private String password;
 
-    public FormLogin(String nim, String pasword) {
-        this.nim = nim;
-        this.pasword = pasword;
+    public FormLogin(String NIM, String password) {
+        this.NIM = NIM;
+        this.password = password;
     }
 
-    public String getNim() {
-        return nim;
+    public String getNIM() {
+        return NIM;
     }
 
-    public void setNim(String nim) {
-        this.nim = nim;
+    public void setNIM(String NIM) {
+        this.NIM = NIM;
     }
 
-    public String getPasword() {
-        return pasword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasword(String pasword) {
-        this.pasword = pasword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
