@@ -20,8 +20,17 @@ public interface BaseApiService {
     @POST("addUser/")
     Call<ResponseBody> addUser(@Body FormAddUser addUser);
 
-    @POST("addPengaduan/")
-    Call<ResponseBody> addPengaduan(@Body FormAddPengaduan addPengaduan);
+    @POST("addPengaduanFasilitas/")
+    Call<ResponseBody> addFasilitas(@Body FormAddPengaduan addPengaduan);
+
+    @POST("addPengaduanDosen/")
+    Call<ResponseBody> addDosen(@Body FormAddPengaduan addPengaduan);
+
+    @POST("addPengaduanOrganisasi/")
+    Call<ResponseBody> addOrganisasi(@Body FormAddPengaduan addPengaduan);
+
+    @POST("addPengaduanAdministrasi/")
+    Call<ResponseBody> addAdministrasi(@Body FormAddPengaduan addPengaduan);
 
     /*@GET("api/company/companyprofil")
     Call<List<ResponseCompanyProfile>>getCompanyProfile(@Header("Authorization") String Authorization);

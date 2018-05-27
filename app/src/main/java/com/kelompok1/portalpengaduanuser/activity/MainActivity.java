@@ -15,6 +15,7 @@ import android.view.MenuItem;
 
 import com.kelompok1.portalpengaduanuser.adapter.AdapterPager;
 import com.kelompok1.portalpengaduanuser.R;
+import com.kelompok1.portalpengaduanuser.session.SessionManager;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -27,6 +28,8 @@ public class MainActivity extends AppCompatActivity
     private static final Integer[] Gambar = {R.drawable.coba, R.drawable.coba2, R.drawable.coba3, R.drawable.coba4};
     private static ViewPager mPager;
     private static int currentPage = 0;
+    SessionManager session;
+
     private ArrayList<Integer> GambarArray = new ArrayList<Integer>();
 
     private void init() {
@@ -148,6 +151,12 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_about) {
             Intent i = new Intent(MainActivity.this, TentangKamiActivity.class);
+            startActivity(i);
+        }
+        else if (id == R.id.nav_logout) {
+            session = new SessionManager(getApplicationContext());
+            session.logoutUser();
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
             startActivity(i);
         }
 

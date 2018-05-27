@@ -67,7 +67,7 @@ public class SessionManager {
         editor.putBoolean(IS_LOGIN, true);
 
         // Storing name in pref
-        editor.putString(KEY_NIM, role);
+        editor.putString(KEY_ROLE, role);
 
         // commit changes
         editor.commit();
@@ -118,8 +118,15 @@ public class SessionManager {
      * */
     public String getNama(){
         String accesNama = pref.getString(KEY_NAMA, "missing");
-
         return accesNama;
+    }
+    public String getNim(){
+        String accesNim = pref.getString(KEY_NIM, "missing");
+        return accesNim;
+    }
+    public String getRole(){
+        String accesRole = pref.getString(KEY_ROLE, "missing");
+        return accesRole;
     }
 
     /**
@@ -149,5 +156,4 @@ public class SessionManager {
     public boolean isLoggedIn(){
         return pref.getBoolean(IS_LOGIN, false);
     }
-
 }

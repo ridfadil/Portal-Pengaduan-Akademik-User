@@ -43,7 +43,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="Selamat Datang , FADIL" />
+                android:textSize="20sp"
+                android:text="Selamat Datang"
+                android:textStyle="bold"/>
 
             <TextView
                 android:layout_width="match_parent"

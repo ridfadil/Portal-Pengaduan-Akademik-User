@@ -74,12 +74,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (response.isSuccessful()) {
                     session = new SessionManager(getApplicationContext());
                     responData = response.body().getData();
-                    String Nim = responData.get(0).getNim();
-                    String nama = responData.get(0).getNama();
-                    String role = responData.get(0).getRole();
-                    if (nama.isEmpty()&&Nim.isEmpty()) {
+
+                    if (responData.size()<1) {
                         Toast.makeText(LoginActivity.this, "Login Salah cek email dan username", Toast.LENGTH_SHORT).show();
                     } else {
+                        String Nim = responData.get(0).getNim();
+                        String nama = responData.get(0).getNama();
+                        String role = responData.get(0).getRole();
                         session.createNamaSession(nama);
                         session.createNimSession(Nim);
                         session.createRoleSession(role);

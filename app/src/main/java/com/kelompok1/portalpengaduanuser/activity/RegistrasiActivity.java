@@ -36,7 +36,7 @@ public class RegistrasiActivity extends AppCompatActivity {
     @BindView(R.id.btn_registrasi)
     Button btnRegistrasi;
 
-    String nim,nama,repass,pass;
+    String nim, nama, repass, pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,16 +58,16 @@ public class RegistrasiActivity extends AppCompatActivity {
     }
 
 
-    private void saveRegister(String mNim, String mNama,String mPass) {
+    private void saveRegister(String mNim, String mNama, String mPass) {
 
-        FormAddUser user = new FormAddUser(mNim,mNama,mPass);
+        FormAddUser user = new FormAddUser(mNim, mNama, mPass);
         Call<ResponseBody> call = UtilsApi.getAPIService().addUser(user);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(RegistrasiActivity.this,"Berhasil Register", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrasiActivity.this, "Berhasil Register", Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(RegistrasiActivity.this, LoginActivity.class);
                     startActivity(i);
                 } else {
@@ -93,16 +93,14 @@ public class RegistrasiActivity extends AppCompatActivity {
                 nama = etNamaRegistrasi.getText().toString();
                 repass = etRepassword.getText().toString();
 
-                if(nim.isEmpty() || pass.isEmpty() || nama.isEmpty() || repass.isEmpty()){
-                    if (pass.equals(repass)){
+                if (nim.isEmpty() || pass.isEmpty() || nama.isEmpty() || repass.isEmpty()) {
+                    Toast.makeText(RegistrasiActivity.this, "Form masih ada yang Kosong", Toast.LENGTH_SHORT).show();
+                } else {
+                    if (pass.equals(repass)) {
+                        saveRegister(nim, nama, pass);
+                    } else {
                         Toast.makeText(RegistrasiActivity.this, "Password Tidak sesuai, Silakan ulangi", Toast.LENGTH_SHORT).show();
                     }
-                    else{
-                        saveRegister(nim,nama,pass);
-                    }
-                }
-                else{
-                    Toast.makeText(RegistrasiActivity.this, "Form masih ada yang Kosong", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }

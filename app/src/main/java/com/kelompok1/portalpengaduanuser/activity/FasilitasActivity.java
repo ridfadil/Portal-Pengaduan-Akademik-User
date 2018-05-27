@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.kelompok1.portalpengaduanuser.R;
 import com.kelompok1.portalpengaduanuser.api.UtilsApi;
 import com.kelompok1.portalpengaduanuser.modelapi.FormAddPengaduan;
+import com.kelompok1.portalpengaduanuser.session.SessionManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,8 +32,9 @@ public class FasilitasActivity extends AppCompatActivity {
     EditText saranFasilitas;
     @BindView(R.id.btn_kirim_fasilitas)
     Button btnKirimFasilitas;
+    SessionManager session;
 
-    String namaFasilitas, keluhan, saran, NIM = "1157050094", jenis = "fasilitas";
+    String namaFasilitas, keluhan, saran, jenis = "fasilitas";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class FasilitasActivity extends AppCompatActivity {
     private void kirimAduan(String mJudul, String mNim, String mKeluhan, String mSaran, String mJenis) {
 
         FormAddPengaduan pengaduan = new FormAddPengaduan(mJudul, mNim, mKeluhan, mSaran, mJenis);
-        Call<ResponseBody> call = UtilsApi.getAPIService().addPengaduan(pengaduan);
+        Call<ResponseBody> call = UtilsApi.getAPIService().addFasilitas(pengaduan);
 
         call.enqueue(new Callback<ResponseBody>() {
             @Override
@@ -89,7 +91,9 @@ public class FasilitasActivity extends AppCompatActivity {
                 if (namaFasilitas.isEmpty() || keluhan.isEmpty()|| saran.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Form Masih Ada yang Kosong", Toast.LENGTH_SHORT).show();
                 } else {
-                    kirimAduan(namaFasilitas, NIM, keluhan, saran, jenis);
+                    session = new SessionManager(getApplicationContext());
+                    String nim= session.getNim();
+                    kirimAduan(namaFasilitas, nim, keluhan, saran, jenis);
                 }
                 break;
         }
